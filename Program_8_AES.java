@@ -14,9 +14,8 @@ public class Program_8_AES {
         byte[] enbytes = enCipher.doFinal(plainText.getBytes());
         String encryptedString = Base64.getEncoder().encodeToString(enbytes);
         System.out.println(encryptedString);
-        Cipher dCipher = Cipher.getInstance("AES");
-        dCipher.init(Cipher.DECRYPT_MODE, secretKey);
-        byte[] deciphered = dCipher.doFinal(Base64.getDecoder().decode(encryptedString));
+        enCipher.init(Cipher.DECRYPT_MODE, secretKey);
+        byte[] deciphered = enCipher.doFinal(Base64.getDecoder().decode(encryptedString));
         System.out.println("Decrypted String: " + new String(deciphered));
     }
 }
