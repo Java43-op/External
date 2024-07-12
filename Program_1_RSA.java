@@ -66,12 +66,8 @@ public class Program_1_RSA {
 
     public static int modExp(int base, int exp, int mod) {
         int result = 1;
-        while (exp > 0) {
-            if ((exp & 1) == 1) {
-                result = (result * base) % mod;
-            }
-            base = (base * base) % mod;
-            exp >>= 1;
+        for (int i = 0; i < exp; i++) {
+            result = (result * base) % mod;
         }
         return result;
     }
